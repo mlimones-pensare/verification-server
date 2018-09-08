@@ -1,0 +1,40 @@
+{
+  "name": "verification-service",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "start": "node -r dotenv/config ./bin/www",
+    "dev": "node -r dotenv/config ./models/sync-database.js",
+    "migrate": "node -r dotenv/config ./models/migrate.js",
+    "seed": "node -r dotenv/config ./models/seed.js",
+    "refresh": "npm run migrate && npm run seed",
+    "test": "mocha --exit 'tests/**/*spec.js'"
+  },
+  "dependencies": {
+    "chalk": "^2.4.1",
+    "cookie-parser": "~1.4.3",
+    "debug": "~2.6.9",
+    "dotenv": "^6.0.0",
+    "ejs": "~2.5.7",
+    "express": "~4.16.0",
+    "http-errors": "~1.6.2",
+    "jwt-simple": "^0.5.1",
+    "morgan": "~1.9.0",
+    "mysql2": "^1.6.1",
+    "passport": "^0.4.0",
+    "passport-jwt": "^4.0.0",
+    "sequelize": "^4.38.0",
+    "uuid": "^3.3.2"
+  },
+  "devDependencies": {
+    "chai": "^4.1.2",
+    "chai-sorted": "^0.2.0",
+    "chai-subset": "^1.6.0",
+    "mocha": "^5.2.0",
+    "nodemon": "^1.18.3",
+    "sinon": "^6.1.5",
+    "sinon-chai": "^3.2.0",
+    "sinon-express-mock": "^2.0.5",
+    "sqlite3": "^4.0.2"
+  }
+}
