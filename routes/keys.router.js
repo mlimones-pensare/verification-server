@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 var { User } = require('../models/user.model');
 var { authenticationGuard } = require('../middleware/auth');
+
 const NodeRSA = require('node-rsa');
 
 /* GET users listing. */

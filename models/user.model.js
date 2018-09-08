@@ -3,13 +3,21 @@ const { sequelize } = require('./connection');
 
 const User = sequelize.define('user', {
   phone_number: {
-    type: Sequelize.STRING
+    type: Sequelize.STRING,
+    allowNull: false,
   },
   public_key: {
-    type: Sequelize.STRING
+    type: Sequelize.STRING,
+    allowNull: false,
   },
-  display_name: {
-    type: Sequelize.STRING
+  name: {
+    type: Sequelize.STRING,
+    allowNull: false,
+  },
+  account_id: {
+    type: Sequelize.STRING,
+    allowNull: false,
+    unique: true
   },
 }, {
   underscored: true,
