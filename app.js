@@ -6,6 +6,7 @@ var logger = require('morgan');
 
 const auth = require('./middleware/auth');
 var meRouter = require('./routes/me.router');
+var keysRouter = require('./routes/keys.router');
 
 var app = express();
 
@@ -21,6 +22,7 @@ app.use(auth.initialize());
 
 app.use('/auth', auth.authRouter);
 app.use('/me', meRouter);
+app.use('/keys', keysRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
