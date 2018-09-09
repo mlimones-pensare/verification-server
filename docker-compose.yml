@@ -1,0 +1,23 @@
+version: '3'
+services:
+  web-service:
+    build: .
+    ports:
+      - "${SERVICE_PORT}:3000"
+    environment:
+      - DB_CONNECTION
+      - DB_HOST=db
+      - DB_PORT
+      - DB_DATABASE
+      - DB_USERNAME
+      - DB_PASSWORD
+      - JWT_SECRET
+    volumes:
+      - /home/manuel/Documents/mycode/hackathon/basic-crypto:/etc/ckeys
+  db:
+    image: mysql:5.7
+    environment:
+      - MYSQL_ROOT_PASSWORD=${DB_PASSWORD}
+      - MYSQL_DATABASE=${DB_DATABASE}
+    ports:
+      - "3306:3306"
