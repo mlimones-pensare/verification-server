@@ -10,11 +10,11 @@ const Payment = sequelize.define('payment', {
   amount: {
     type: Sequelize.STRING
   },
-  sender_account: {
+  source_account: {
     type: Sequelize.STRING,
     allowNull: false,
   },
-  receiver_acount: {
+  destination_account: {
     type: Sequelize.STRING,
     allowNull: false,
   }
