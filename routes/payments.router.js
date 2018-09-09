@@ -54,6 +54,7 @@ async function notifyWebHooks(paymentInfo) {
   const url = JAZ_SERVER_HOST + '/execPayment';
   const encryptedPacket = encryptAndSign(paymentInfo, keystore.local_private_key, keystore.remote_public_key);
   console.log('TRANSACTION ACCEPTED');
+  console.log(encryptedPacket);
   //await request.post(url).send(encryptedPacket);
   console.log('END');
 }
