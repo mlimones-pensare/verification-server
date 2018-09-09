@@ -12,6 +12,12 @@ const request = require('superagent');
 class ApplicationError extends Error {
 };
 
+async function textToBodyMiddleware(req, res, next){
+  let text = req.body.text;
+  req.body = JSON.parse(text);
+  next();
+}
+
 async function sourceAccountUserFinder(req, res, next){
   let source_account = req.body.source_account;
   let user = await User.findOne({
@@ -107,6 +113,6 @@ async function processPayment(req, res){
   }
 }
 
-router.post('/', sourceAccountUserFinder, sourceSignatureValidator, processPayment);
+router.post('/',textToBodyMiddleware, sourceAccountUserFinder, sourceSignatureValidator, processPayment);
 
 module.exports = router;
