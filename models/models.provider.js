@@ -13,5 +13,6 @@ async function clearDatabase() {
 module.exports = {
   DB: sequelize,
   User,
+  Payment,
   clearDatabase,
 };
