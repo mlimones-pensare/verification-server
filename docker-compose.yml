@@ -13,7 +13,7 @@ services:
       - DB_PASSWORD
       - JWT_SECRET
     volumes:
-      - /home/manuel/Documents/mycode/hackathon/basic-crypto:/etc/ckeys
+      - ${KEYS_FOLDER}:/etc/ckeys
   db:
     image: mysql:5.7
     environment:
