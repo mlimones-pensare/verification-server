@@ -56,6 +56,9 @@ async function notifyWebHooks(paymentInfo) {
   console.log('TRANSACTION ACCEPTED');
   console.log(encryptedPacket);
   //await request.post(url).send(encryptedPacket);
+  console.log('##########');
+  console.log('SENDING MAIL');
+  console.log('##########');
   console.log('END');
 }
 
