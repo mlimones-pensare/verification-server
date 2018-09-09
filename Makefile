@@ -7,4 +7,4 @@ reload:
 	git pull origin master
 	docker-compose up -d --no-deps --build web-service
 migrate:
-	docker-compose exec api-rest npm run migrate
+	docker-compose exec web-service npm run migrate

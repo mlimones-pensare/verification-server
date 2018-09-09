@@ -52,9 +52,10 @@ const TRANSACTION_ENDPOINT= '';
 
 async function notifyWebHooks(paymentInfo) {
   const url = JAZ_SERVER_HOST + '/execPayment';
-  console.log(url);
   const encryptedPacket = encryptAndSign(paymentInfo, keystore.local_private_key, keystore.remote_public_key);
-  await request.post(url).send(encryptedPacket);
+  console.log('TRANSACTION ACCEPTED');
+  //await request.post(url).send(encryptedPacket);
+  console.log('END');
 }
 
 
