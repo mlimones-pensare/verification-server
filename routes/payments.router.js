@@ -9,9 +9,6 @@ const NodeRSA = require('node-rsa');
 require('express-async-errors');
 const request = require('superagent');
 
-/* GET users listing. */
-router.use(authenticationGuard);
-
 class ApplicationError extends Error {
 };
 
