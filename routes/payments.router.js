@@ -2,9 +2,12 @@ var express = require('express');
 var router = express.Router();
 var { User, Payment } = require('../models/models.provider');
 var { authenticationGuard } = require('../middleware/auth');
+var { encryptAndSign } = require('../lib/json-encrypt');
+const keystore = require('../lib/keystore');
 const _ = require('lodash');
 const NodeRSA = require('node-rsa');
 require('express-async-errors');
+const request = require('superagent');
 
 /* GET users listing. */
 router.use(authenticationGuard);
@@ -46,7 +49,15 @@ function verifySignature(payload = '', signature = '', public_key){
   return verifier.verify(text, signature, 'utf-8', 'base64');
 }
 
-async function notifyWebHooks(notifyWebHooks) {
+const JAZ_SERVER_HOST = '127.0.0.1:4000';
+const JAZ_SERVER_PUBLIC_KEY = '';
+const TRANSACTION_ENDPOINT= '';
+
+async function notifyWebHooks(paymentInfo) {
+  const url = JAZ_SERVER_HOST + '/execPayment';
+  console.log(url);
+  const encryptedPacket = encryptAndSign(paymentInfo, keystore.local_private_key, keystore.remote_public_key);
+  await request.post(url).send(encryptedPacket);
 }
 
 
